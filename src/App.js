@@ -29,11 +29,12 @@ function App() {
 
   React.useEffect(() => {
     const init = async () => {
-      const check = await Auth.currentSession()
-      console.log("CHECK", check)
-      const login = check || await Auth.federatedSignIn() 
-      console.log("LOGIN", login)
-      const list = login && await getFileList()
+      // const check = await Auth.currentSession()
+      // console.log("CHECK", check)
+      // const login = check || await Auth.federatedSignIn() 
+      // console.log("LOGIN", login)
+      // const list = login && await getFileList()
+      const list = await getFileList()
       console.log("LIST", list)
     }
 
