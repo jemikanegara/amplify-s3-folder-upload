@@ -29,7 +29,7 @@ function App() {
 
   React.useEffect(() => {
     const init = async () => {
-      // const check = await Auth.currentSession()
+      await Auth.currentSession()
       // console.log("CHECK", check)
       // const login = check || await Auth.federatedSignIn() 
       // console.log("LOGIN", login)
