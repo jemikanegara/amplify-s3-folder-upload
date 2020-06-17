@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Amplify, { Auth, Storage } from 'aws-amplify';
+import Amplify, { Storage } from 'aws-amplify';
 
 Amplify.configure({
   Auth: {
@@ -29,7 +29,7 @@ function App() {
 
   React.useEffect(() => {
     const init = async () => {
-      await Auth.currentSession()
+      // await Auth.currentSession()
       // console.log("CHECK", check)
       // const login = check || await Auth.federatedSignIn() 
       // console.log("LOGIN", login)
