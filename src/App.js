@@ -24,6 +24,10 @@ function App() {
   const getFileList = async () => {
     const responseList =  await Storage.list('file/')
     setFileList(responseList)
+
+    const gets = await Storage.get('file/config.mk')
+    console.log(gets)
+
     return responseList
   }
 
@@ -55,7 +59,12 @@ function App() {
             onChange={e => {
               Array.from(e.target.files).forEach(async file => { 
                 console.log(file)
-                const puts = await Storage.put(`file/${file.webkitRelativePath}`, file)
+                const puts = await Storage.put(`file/${file.webkitRelativePath}`, file, {
+                  metadata: {
+                    'meta': 'Me'
+                  },
+                  tagging: "owner=notme&upload=jan"
+                })
                 console.log("PUTS", puts)
                 getFileList()
                });
