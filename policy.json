@@ -1,0 +1,57 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::ylptest/public/*"
+      ],
+      "Effect": "Allow",
+      "Principal": "*"
+    },
+    {
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::ylptest/uploads/*"
+      ],
+      "Effect": "Allow",
+      "Principal": "*"
+    },
+    {
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::ylptest/protected/*"
+      ],
+      "Effect": "Allow",
+      "Principal": "*"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "public/",
+            "public/*",
+            "protected/",
+            "protected/*"
+          ]
+        }
+      },
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::ylptest"
+      ],
+      "Effect": "Allow",
+      "Principal": "*"
+    }
+  ]
+}
